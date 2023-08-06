@@ -101,9 +101,12 @@ public class MainActivity extends AppCompatActivity {
         int height = Integer.parseInt(heightInput);
         // Construct the URL for generating the image using the Placebear API
         String imageUrl = "https://placebear.com/" + width + "/" + height;
+        // Create an ImageInfo object to store the image information
+        ImageInfo imageInfo = new ImageInfo(1, imageUrl, width, height, "local_file_path"); // You can use a unique ID for each image
+
         // Create an intent to start the GeneratedImageActivity
         Intent intent = new Intent(MainActivity.this, GeneratedImageActivity.class);
-        intent.putExtra("image_url", imageUrl); // Pass the image URL as an extra
+        intent.putExtra("image_info", imageInfo); // Pass the ImageInfo object as an extra
         startActivity(intent);
     }
 
