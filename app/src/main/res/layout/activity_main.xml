@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp">
+
+    <!-- EditText for image width -->
+    <EditText
+        android:id="@+id/etWidth"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Image Width (in pixels)" />
+
+    <!-- EditText for image height -->
+    <EditText
+        android:id="@+id/etHeight"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/etWidth"
+        android:layout_marginTop="16dp"
+        android:hint="Image Height (in pixels)" />
+
+    <!-- Button to generate the image -->
+    <Button
+        android:id="@+id/btnGenerate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/etHeight"
+        android:layout_marginTop="16dp"
+        android:text="Generate Image" />
+
+    <!-- Button to show the list of saved images -->
+    <Button
+        android:id="@+id/btnShowSavedImages"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/btnGenerate"
+        android:layout_marginTop="16dp"
+        android:text="Show Saved Images" />
+
+    <!-- Toolbar with delete option -->
+
+    <!-- ImageView to display the generated image -->
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:layout_below="@id/btnShowSavedImages"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="370dp"
+        android:background="?attr/colorPrimary"
+        android:elevation="4dp"
+        android:theme="?attr/actionBarTheme"
+        android:titleTextColor="@android:color/white">
+
+        <ImageView
+            android:id="@+id/ivDelete"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            android:src="@drawable/ic_launcher_background" />
+
+    </androidx.appcompat.widget.Toolbar>
+
+    <ImageView
+        android:id="@+id/imageDisplay"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="291dp"
+        android:scaleType="centerInside"
+        android:src="@mipmap/ic_launcher" />
+
+</RelativeLayout>
