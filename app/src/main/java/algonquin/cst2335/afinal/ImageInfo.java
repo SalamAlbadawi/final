@@ -3,16 +3,31 @@ package algonquin.cst2335.afinal;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import androidx.room.ColumnInfo;
+import androidx.room.Entity;
+import androidx.room.PrimaryKey;
+
+@Entity(tableName = "images")
 public class ImageInfo implements Parcelable {
+
+    @PrimaryKey(autoGenerate = true)
+    @ColumnInfo(name = "id")
     private int id;
+
+    @ColumnInfo(name = "url")
     private String url;
+
+    @ColumnInfo(name = "width")
     private int width;
+
+    @ColumnInfo(name = "height")
     private int height;
+
+    @ColumnInfo(name = "path")
     private String path;
 
     // Constructor
-    public ImageInfo(int id, String url, int width, int height, String path) {
-        this.id = id;
+    public ImageInfo(String url, int width, int height, String path) {
         this.url = url;
         this.width = width;
         this.height = height;
@@ -54,24 +69,44 @@ public class ImageInfo implements Parcelable {
         }
     };
 
-    // Getter methods
+    // Getter and Setter methods
     public int getId() {
         return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getUrl() {
         return url;
     }
 
+    public void setUrl(String url) {
+        this.url = url;
+    }
+
     public int getWidth() {
         return width;
+    }
+
+    public void setWidth(int width) {
+        this.width = width;
     }
 
     public int getHeight() {
         return height;
     }
 
+    public void setHeight(int height) {
+        this.height = height;
+    }
+
     public String getPath() {
         return path;
+    }
+
+    public void setPath(String path) {
+        this.path = path;
     }
 }

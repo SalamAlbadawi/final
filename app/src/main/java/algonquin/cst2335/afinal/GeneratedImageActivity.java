@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -28,9 +29,6 @@ public class GeneratedImageActivity extends AppCompatActivity {
 
             // Use the imageInfo properties as needed
             String imageUrl = imageInfo.getUrl();
-            int width = imageInfo.getWidth();
-            int height = imageInfo.getHeight();
-            String path = imageInfo.getPath();
 
             // Load the image using Picasso or Glide
             Picasso.get().load(imageUrl).into(generatedImageView);
@@ -57,6 +55,7 @@ public class GeneratedImageActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 // TODO: Implement the logic to show the list of saved images
+                // For example, you can start a new activity or show a dialog
             }
         });
     }
@@ -68,7 +67,7 @@ public class GeneratedImageActivity extends AppCompatActivity {
         builder.setPositiveButton("Save", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                // TODO: Save the image here
+                downloadAndSaveImage(); // Call the method to download and save the image
                 dialog.dismiss();
             }
         });
@@ -79,5 +78,29 @@ public class GeneratedImageActivity extends AppCompatActivity {
             }
         });
         builder.show();
+    }
+
+    private void showToastMessage(String message) {
+        Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
+    }
+
+    private void downloadAndSaveImage() {
+        if (getIntent() != null && getIntent().hasExtra("image_info")) {
+            ImageInfo imageInfo = getIntent().getParcelableExtra("image_info");
+
+            // Your code here to download the image using the URL in imageInfo
+            // For example, you can use libraries like Picasso or Glide to download the image.
+
+            // Once the image is downloaded, save its details to the local database
+            ImageDatabaseHelper databaseHelper = new ImageDatabaseHelper(this);
+
+            long insertedRowId = databaseHelper.insertImage(imageInfo);
+
+            if (insertedRowId != -1) {
+                showToastMessage("Image saved!");
+            } else {
+                showToastMessage("Failed to save image!");
+            }
+        }
     }
 }
